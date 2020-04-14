@@ -2,10 +2,6 @@ import random
 import requests
 import time
 
-#url = "http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule"
-content='我们'
-
-
 class Youdao():
     def __init__(self, content):
         self.content = content
@@ -29,19 +25,13 @@ class Youdao():
         i = self.salt
         e = self.content
         s = "fanyideskweb" + e + i + "Nw(nmmbP%A-r6U3EUn]Aj"
-        # print("s=",s,"   md5=",get_md5(s))
         return self.get_md5(s)
-
-    # return 'd330b7eeeef6a968524d0ea22f41a6f2'
 
     def get_ts(self):
         t = time.time()
         ts = str(int(round(t * 1000)))
-        print("ts=", ts)
         return ts
 
-    # def get_content(self):
-    # return content
 
     def yield_form_date(self):
         form_data = {
@@ -71,9 +61,13 @@ class Youdao():
 
     def fanyi(self):
         response = requests.post(self.url, data=self.yield_form_date(), headers=self.get_headers())
-        return response.text
+        import json
+        content=json.loads(response.text)
+        return content['translateResult'][0][0]['tgt']
 
 
 if __name__ == '__main__':
-    youdao=Youdao('我们')
-    print(youdao.fanyi())
+    while(True):
+        i=input("please input : ")
+        youdao=Youdao(i)
+        print("fanyi result : ",youdao.fanyi())
