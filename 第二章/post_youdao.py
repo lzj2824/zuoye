@@ -68,6 +68,9 @@ class Youdao():
 
 if __name__ == '__main__':
     while(True):
-        i=input("please input : ")
-        youdao=Youdao(i)
-        print("fanyi result : ",youdao.fanyi())
+        try:
+            i=input("please input : ")
+            youdao=Youdao(i)
+            print("fanyi result : ",youdao.fanyi())
+        except:
+            pass
