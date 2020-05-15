@@ -14,6 +14,11 @@ class HefengDb():
         for each in all:
             print(each)
 
+    def find(self,condition):
+        return self.sheet_weather.find()
+
+    def
+
 if __name__=="__main__":
     hefengDb=HefengDb()
     hefengDb.save({"name":"lzj","class":"net19049"})
