@@ -29,7 +29,7 @@ class TestCityWeatherDbCase(unittest.TestCase):
         hefengDb=HefengDb()
         hefengDb.save_all(weathers)
         print("show_all")
-        hefengDb.show_all()w
+        hefengDb.show_all()
         self.assertEqual(7,hefengDb.count())
         hefengDb.delete()
 
